@@ -15,11 +15,19 @@ function reducer(state, action) {
       return (state = { ...state, count: newNumber < 0 ? 0 : newNumber });
 
     case "increamentValue":
-      return (state = { ...state, count: state.count + action.payload });
+      return (state = {
+        ...state,
+        count: state.count + action.payload,
+        text: "",
+      });
 
     case "decrementValue":
       const newNumber2 = state.count - action.payload;
-      return (state = { ...state, count: newNumber2 < 0 ? 0 : newNumber2 });
+      return (state = {
+        ...state,
+        count: newNumber2 < 0 ? 0 : newNumber2,
+        text: "",
+      });
 
     case "textInput":
       return (state = { ...state, text: action.payload });
@@ -65,7 +73,7 @@ const Count = () => {
             className="input"
             placeholder="Add Value"
             onChange={(e) =>
-              dispatch({ type: "textInput", payload: Number(e.target.value)})
+              dispatch({ type: "textInput", payload: Number(e.target.value) })
             }
           />
         </div>
